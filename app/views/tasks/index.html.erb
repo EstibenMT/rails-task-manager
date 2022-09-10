@@ -1,0 +1,16 @@
+<h1>List Tasks</h1>
+
+<% @tasks.each do |task| %>
+  <div>
+    <% if task.completed %>
+      <i class="fa-regular fa-square-check"></i>
+    <% else %>
+      <i class="fa-regular fa-square"></i>
+    <% end %>
+    <h2><%= link_to task.title, task_path(task)%></h2>
+    <%= link_to "borrar", task_path(task.id), data: {turbo_method: :delete} %>
+  </div>
+
+<% end %>
+
+<%= link_to "Add a task", task_new_path %>
